@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<title>Hello World App</title>
+	<script
+    src="../../resources/sap-ui-core.js"
+    data-sap-ui-resourceroots='{"prodman": "./"}'
+    data-sap-ui-bindingsyntax="complex"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-libs="sap.m">
+	</script>
+
+	<script>
+    var oCompContainer = new sap.ui.core.ComponentContainer({
+      name: 'prodman'
+    });
+
+    oCompContainer.placeAt("content");
+
+	</script>
+
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

@@ -1,0 +1,42 @@
+<mvc:View
+	controllerName="ui5bp.controller.CreateProduct"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+  xmlns:l="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+ <Page title="Artikel bearbeiten"  showNavButton="true" navButtonPress="onBack">
+	 <headerContent>
+		 <Button icon="sap-icon://home" press="toLaunchpad"></Button>
+	 </headerContent>
+		<content>
+      <l:SimpleForm editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="4"
+				labelSpanL="3"
+				labelSpanM="4"
+				labelSpanS="12"
+				adjustLabelSpan="false"
+				emptySpanXL="0"
+				emptySpanL="4"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="1"
+				columnsM="1"
+				singleContainerFullSize="false">
+        <Label text="Name"></Label>
+        <Input id="idName"></Input>
+      </l:SimpleForm>
+   </content>
+	 <footer>
+		 <Bar>
+			 <contentRight>
+				 <Button id="edit" text="Edit" enabled="false" press="handleEditPress" />
+				 <Button id="save" text="Save" type="Emphasized" visible="true" press="handleSavePress" />
+				 <Button id="cancel" text="Cancel" visible="true" press="handleCancelPress" />
+			 </contentRight>
+		 </Bar>
+	 </footer>
+ </Page>
+</mvc:View>

@@ -1,0 +1,23 @@
+<mvc:View
+	controllerName="ui5bp.controller.Product"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+ <Page title="Artikelliste"  showNavButton="true" navButtonPress="onBack">
+	 <headerContent>
+		 <Button icon="sap-icon://home" press="toLaunchpad"></Button>
+	 </headerContent>
+		<content>
+      <Button text="Artikel lesen" press="onPress"></Button>
+			<List id="productList" items="{/}">
+				<ObjectListItem title="{productname}" number="{quantity}" intro="{eancode}" numberUnit="ST">
+					<attributes>
+						<ObjectAttribute title="Hersteller" text="{manufacturer}" />
+					</attributes>
+				</ObjectListItem>
+			</List>
+   </content>
+	 <footer></footer>
+ </Page>
+</mvc:View>

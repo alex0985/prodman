@@ -1,0 +1,66 @@
+{
+	"_version": "1.6.0",
+	"sap.app": {
+		"id": "prodman",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{anubhavTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://home"
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_bluecrystal"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "prodman.view.App",
+			"type": "XML",
+			"id": "idApp"
+		},
+		"dependencies": {
+			"minUI5Version": "1.44",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.44"
+				},
+				"sap.m": {
+					"minVersion": "1.44"
+				},
+				"sap.ushell": {
+					"minVersion": "1.44"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.44"
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "prodman.i18n.i18n"
+				}
+			},
+		},
+		"routing": {},
+    
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	}
+}
