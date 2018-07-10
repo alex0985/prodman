@@ -28,7 +28,9 @@ var appRoutes = require('./app/routes/api')(router);
 app.use('/api', appRoutes);
 
 //Mit Datenbank verbinden
-mongoose.connect('mongodb://localhost:27017/prodman', { useNewUrlParser: true });
+//mongoose.connect('mongodb://localhost:27017/prodman', { useNewUrlParser: true });
+var url = 'mongodb://mongodbadmin:q9euTW5E6VZU@ds131601.mlab.com:31601/prodman'
+mongoose.connect(url, { useNewUrlParser: true });
 //Prüfe Verbindung
 var db = mongoose.connection;
 db.on('error',function(){
@@ -41,8 +43,6 @@ db.once('open', function() {
 app.get('*', function(req,res){
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
-
-
 
 //Starte Server
 app.listen(port, function(){

@@ -42,10 +42,26 @@ module.exports = function(router){
     });
   });
 
-  router.post('/getproducts', function(req,res){
+  router.post('/updateProduct', function(req,res){
+    //var filter[""] = req.body;
+    var product = new Product();
+    product.productname   = req.body.productname;
+    product.eancode       = req.body.eancode;
+    product.manufacturer  = req.body.manufacturer;
+    product.quantity      = req.body.quantity;
+    product.purchaseprice = req.body.purchaseprice;
+    product.sellingprice  = req.body.sellingprice;
+    product.update(filter, product, function(err){
+      if(err){
+        res.send(err);
+      }else{
+        res.send('Product updated');
+      }
+    });
+  });
 
+  router.post('/getproducts', function(req,res){
     var filter = req.body;
-    
     mongoose.model('product').find(filter, function(err, products){
       if (err) {
         res.send(err);
