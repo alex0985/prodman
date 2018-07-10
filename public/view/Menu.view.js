@@ -35,7 +35,8 @@ sap.ui.jsview("ui5bp.view.Menu", {
                     text: "{i18n>WELCOME_TITLE}"
                 })]
             }),
-            content: [oList],
+            content: [oList]
+            ,
             footer: new sap.m.Bar({
                 contentMiddle: [new sap.m.Link("myproLink", {
                 })]

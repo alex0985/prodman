@@ -13,10 +13,12 @@ sap.ui.define([
 		},
 		onBack: function(oEvent){
 			this._initViewModel();
+			this._showFormFragment("StartProduct");
 			sap.ui.getCore().getEventBus().publish("nav", "back", {id : "Launchpad"});
 		},
 		toLaunchpad: function () {
 			this._initViewModel();
+			this._showFormFragment("StartProduct");
 			sap.ui.getCore().getEventBus().publish("nav", "back", {id : "Launchpad"});
 		},
 		onPress: function (oEvent) {
@@ -62,7 +64,6 @@ sap.ui.define([
 
 				var oModelDB =	this._queryForProduct(filter);
 				var dbData = oModelDB.getData();
-				debugger;
 				if (dbData.length > 0) {
 					oModel.setData(dbData[0]);
 					this._showFormFragment("CreateProduct");
@@ -106,6 +107,7 @@ sap.ui.define([
 			var data = this.getView().getModel('maintainProduct').getData();
 
 			if(this._dbId){
+				data["id"] = this._dbId;
 				this._updateProductOnDb(data);
 			}else{
 				this._saveProductOnDb(data);
@@ -118,11 +120,10 @@ sap.ui.define([
 									 url : "/api/updateProduct",
 									 data: JSON.stringify(data),
 									 success : function(data,textStatus, jqXHR) {
-										 debugger;
 										 if (data.message) {
 											 MsgToast.show(data.message);
 										 }else{
-											MsgToast.show("Artikel angelegt");
+											MsgToast.show("Artikel bearbeitet");
 										 }
 									 },
 									 error: function(err){
@@ -137,7 +138,6 @@ sap.ui.define([
 									 url : "/api/product",
 									 data: JSON.stringify(data),
 									 success : function(data,textStatus, jqXHR) {
-										 debugger;
 										 if (data.message) {
 											 MsgToast.show(data.message);
 										 }else{

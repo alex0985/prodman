@@ -56,10 +56,10 @@ sap.ui.jsview("ui5bp.view.App", {
         }
 
 
-        this.app.addMasterPage(sap.ui.jsview("Menu", "ui5bp.view.Menu"));
+         this.app.addMasterPage(sap.ui.jsview("Menu", "ui5bp.view.Menu"));
 
         if(ui5bp.app.config.LaunchpadMode){
-            this.app.addDetailPage(sap.ui.jsview("Launchpad", "ui5bp.view.Launchpad"));
+           this.app.addDetailPage(sap.ui.jsview("Launchpad", "ui5bp.view.Launchpad"));
         }
         this.app.addDetailPage(sap.ui.xmlview("Info", "ui5bp.view.Info"));
         this.app.addDetailPage(sap.ui.xmlview("Product", "ui5bp.view.Product"));

@@ -9,7 +9,7 @@
     <!-- UI5 Bootstrap with OpenUI5 -->
     <script id="sap-ui-bootstrap" type="text/javascript"
     	src="/resources/sap-ui-core.js"
-    	data-sap-ui-theme="sap_bluecrystal"
+    	data-sap-ui-theme="sap_belize"
     	data-sap-ui-xx-bindingSyntax="complex"
     	data-sap-ui-libs="sap.m"
         data-sap-ui-resourceroots='{
@@ -32,11 +32,13 @@
 	-->
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
 
     <script>
+      	sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel("model/login.json"),"login");
         sap.ui.getCore().attachInit(function() {
-            sap.ui.jsview("RootView", "ui5bp.view.App").placeAt('root');
+          sap.ui.jsview("RootView", "ui5bp.view.App").placeAt('root');
+          //  sap.ui.xmlview("RootView", "ui5bp.view.Login").placeAt('root');
         });
     </script>
 </head>

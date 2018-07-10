@@ -9,7 +9,6 @@
 		 <Button icon="sap-icon://home" press="toLaunchpad"></Button>
 	 </headerContent>
 		<content>
-      <Button text="Artikel lesen" press="onPress"></Button>
 			<List id="productList" items="{/}">
 				<ObjectListItem title="{productname}" number="{quantity}" intro="{eancode}" numberUnit="ST">
 					<attributes>
@@ -18,6 +17,11 @@
 				</ObjectListItem>
 			</List>
    </content>
-	 <footer></footer>
+	 <footer>
+		 <Toolbar>
+			 <ToolbarSpacer/>
+		       <Button text="Artikel lesen" type="Accept" press="onPress"></Button>
+		</Toolbar>
+	 </footer>
  </Page>
 </mvc:View>

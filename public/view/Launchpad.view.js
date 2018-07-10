@@ -37,11 +37,12 @@ sap.ui.jsview("ui5bp.view.Launchpad", {
 
         var page = new sap.m.Page({
             setShowHeader: true,
-            title: "UI5 Boilerplate Launchpad",
+            headerContent: new sap.m.Button({text:"Login"}).attachPress(oController.onSubmitDialog),
+            title: "Product Manager",
             footer: new sap.m.Bar({
                 contentMiddle: [new sap.m.Link("myproLinkLP", {
-                    text: "v0.8.0",
-                    href: "http://blog.mypro.de/tag/ui5boilerplate/"
+                    // text: "v0.8.0",
+                    // href: "http://blog.mypro.de/tag/ui5boilerplate/"
                 })]
 
             })
