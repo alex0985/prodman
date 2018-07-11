@@ -29,7 +29,7 @@ app.use('/api', appRoutes);
 
 //Mit Datenbank verbinden
 //mongoose.connect('mongodb://localhost:27017/prodman', { useNewUrlParser: true });
-var url = 'mongodb://mongodbadmin:q9euTW5E6VZU@ds131601.mlab.com:31601/prodman'
+var url = 'mongodb://xxxxx:xxxxx@ds131601.mlab.com:31601/prodman'
 mongoose.connect(url, { useNewUrlParser: true });
 //Prüfe Verbindung
 var db = mongoose.connection;
