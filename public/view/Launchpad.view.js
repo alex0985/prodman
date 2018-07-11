@@ -37,7 +37,7 @@ sap.ui.jsview("ui5bp.view.Launchpad", {
 
         var page = new sap.m.Page({
             setShowHeader: true,
-            headerContent: new sap.m.Button({text:"Login"}).attachPress(oController.onSubmitDialog),
+            headerContent: new sap.m.Button("idButtonLoginTop", {text:"Login"}).attachPress(oController.onSubmitDialog),
             title: "Product Manager",
             footer: new sap.m.Bar({
                 contentMiddle: [new sap.m.Link("myproLinkLP", {

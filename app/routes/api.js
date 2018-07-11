@@ -4,6 +4,28 @@ var Product = require('../models/product');
 var mongoose = require('mongoose');
 
 module.exports = function(router){
+
+  router.post('/connectToDB', function(req,res){
+    var username  = req.body.username;
+    var password  = req.body.password;
+
+    //Mit Datenbank verbinden
+    //mongoose.connect('mongodb://localhost:27017/prodman', { useNewUrlParser: true });
+    var url = 'mongodb://'+ username + ':' + password + '@ds131601.mlab.com:31601/prodman';
+
+    mongoose.connect(url, { useNewUrlParser: true });
+    //Prüfe Verbindung
+    var db = mongoose.connection;
+    db.on('error',function(){
+      console.log('Error while connecting to database');
+      res.send('error');
+    });
+    db.once('open', function() {
+      console.log('Connected to database');
+      res.send('connected');
+    });
+  });
+
   // Create Users
   router.post('/users', function(req,res){
     var user = new User();

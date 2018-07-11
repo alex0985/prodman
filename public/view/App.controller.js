@@ -129,6 +129,16 @@ sap.ui.controller("ui5bp.view.App", {
 	,
 
 	onSubmitDialog: function () {
+		if(this.loginDialog){
+
+		}else{
+			this.loginDialog = this.createDialog();
+
+		}
+		this.loginDialog.open();
+	},
+
+	createDialog: function () {
 		var dialog = new sap.m.Dialog({
 			id: 'idLoginDialog',
 			title: 'Login',
@@ -139,7 +149,29 @@ sap.ui.controller("ui5bp.view.App", {
 			],
 			beginButton: new sap.m.Button({
 				text: 'Anmelden'
-			}).attachPress(this.onLoginPress),
+			}).attachPress(function(){
+
+				 var loginData = sap.ui.getCore().getModel("login").getData();
+				 var credentials = { username:loginData.username, password:loginData.password };
+				 var aData = jQuery.ajax({
+	 		             type : "POST",
+	 		             contentType : "application/json",
+	 		             url : "/api/connectToDB",
+									 data: JSON.stringify(credentials),
+	 		             async: false,
+	 		             success : function(data,textStatus, jqXHR) {
+										 loginData.connected = true;
+										 sap.ui.getCore().getModel("login").setData(loginData);
+										 var dia = sap.ui.getCore().byId("idLoginDialog");
+										 var loginButton = sap.ui.getCore().byId("idButtonLoginTop");
+										 loginButton.setText(credentials.username + " connected");
+										 dia.close();
+	 		             },
+									 error: function(err){
+										 sap.m.MessageToast.show("Benutzername/Password falsch!");
+									 }
+	 		         });
+			}),
 			endButton: new sap.m.Button({
 				text: 'Abbrechen',
 				press: function () {
@@ -151,16 +183,9 @@ sap.ui.controller("ui5bp.view.App", {
 			}
 		});
 
-		dialog.open();
-	},
+	//	dialog.open();
 
-
-	onLoginPress: function() {
-		var loginData = sap.ui.getCore().getModel("login").getData();
-		 loginData.connected = true;
-		 sap.ui.getCore().getModel("login").setData(loginData);
-		 var dialog = sap.ui.getCore().byId("idLoginDialog");
-		 dialog.close();
+		return dialog;
 	}
 
 });

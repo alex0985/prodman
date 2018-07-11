@@ -27,19 +27,6 @@ var router = express.Router();
 var appRoutes = require('./app/routes/api')(router);
 app.use('/api', appRoutes);
 
-//Mit Datenbank verbinden
-//mongoose.connect('mongodb://localhost:27017/prodman', { useNewUrlParser: true });
-var url = 'mongodb://xxxxx:xxxxx@ds131601.mlab.com:31601/prodman'
-mongoose.connect(url, { useNewUrlParser: true });
-//Prüfe Verbindung
-var db = mongoose.connection;
-db.on('error',function(){
-  console.log('Error while connecting to database');
-});
-db.once('open', function() {
-  console.log('Connected to database');
-});
-
 app.get('*', function(req,res){
   res.sendFile(path.join(__dirname + '/public/index.html'));
 });
